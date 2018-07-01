@@ -1,5 +1,17 @@
-package com.pluralsight.calcengine;
+package com.pluralsight.myapp;
 
+// warning: IntelliJ switches automatically to import on demand when you import more than 5 types from a package
+// change this behaviour in "File > Settings... > Editor > Code Style > Java > Imports"
+import com.pluralsight.calcengine.CalculateBase;
+import com.pluralsight.calcengine.MathEquation;
+import com.pluralsight.calcengine.InvalidStatementException;
+import com.pluralsight.calcengine.CalculateHelper;
+import com.pluralsight.calcengine.Adder;
+import com.pluralsight.calcengine.Subtracter;
+import com.pluralsight.calcengine.Multiplier;
+import com.pluralsight.calcengine.Divider;
+
+// if you move `Main` to other package you need to reconfigure your IDE: "Run > Edit Configurations... > Application > Main"
 public class Main {
 
     public static void main(String[] args) {
@@ -32,6 +44,7 @@ public class Main {
                 "multiply 11.0 3.0" // 11.0 * 3.0 = 33.0
         };
 
+        // press "Alt + Enter" in IntelliJ to auto import packages
         CalculateHelper helper = new CalculateHelper();
         for(String statement:statements) {
             try {

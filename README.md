@@ -46,3 +46,33 @@ The `throws` clause of an overriding method must be compatible with the `throws`
 Create exception instance before throwing (provide meaningful detail). Most exception classes provide a constructor that accepts a String message or other detail. Include originating exception (`initCause` method, many provide a constructor that accepts the originating exception)
 
 You can create custom exception types but *in most cases it's better to use existing exception types!*
+
+## Working with Packages
+
+Naming packages with the reverse domain name structure: com.pluralsight.travel
+
+Current package, java.lang package (http://bit.ly/javalang), does not to be fully qualified when using them
+
+*`import` is only a mapper for the compiler!*
+
+Single type import: `import com.xyzcompany.bar.Beer` (preferred way to import types)
+
+Import on demand: `import com.xyzcompany.bar.*` (exposes code to potential breakages)
+
+What when you want to import the Flight type from 2 different packages?
+
+Packages provide _access boundaries_. Access modifiers: no access modifier, `public`, `private`, `protected`
+
+Package folder structure can be placed into an archive file (jar file: can be compressed and have a manifest - http://bit.ly/jarmanifest)
+
+Build managers like Gradle and Maven can create jar files. Also IDEs and JDK can create jar files
+
+Run your java program from cmd with: `java com.pluralsight.myapp.Main`
+
+Java jar documentation: http://bit.ly/psjavajar
+
+Generate jar files with IntelliJ with "File > Project Structure... > Project Settings > Artifacts > + > JAR" and "Build > Build Artifacts..." (other IDEs follow a more standardised way)
+
+Execute the jar with cmd: `java -jar CalcEngine.jar` (the jar file specifies in the manifest where the entry point is)
+
+A jar file is only a zip file with the addition of a manifest

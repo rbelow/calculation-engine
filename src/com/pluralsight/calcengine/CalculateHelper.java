@@ -6,7 +6,7 @@ public class CalculateHelper {
     private static final char MULTIPLY_SYMBOL = '*';
     private static final char DIVIDE_SYMBOL = '/';
 
-    MathCommand command;
+    private MathCommand command;
     double leftValue;
     double rightValue;
     double result;
