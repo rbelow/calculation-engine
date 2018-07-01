@@ -11,15 +11,24 @@ public class CalculateHelper {
     double rightValue;
     double result;
 
-    public void process(String statement) {
+    public void process(String statement) throws InvalidStatementException { // document exception and let callers handle each case
         // add 1.0 2.0
         String[] parts = statement.split(" ");
+        if(parts.length != 3)
+            throw new InvalidStatementException("Incorrect number of fields", statement);
+
         String commandString = parts[0]; // add
-        leftValue = Double.parseDouble(parts[1]); // 1.0
-        rightValue = Double.parseDouble(parts[2]); // 2.0
+        try {
+            leftValue = Double.parseDouble(parts[1]); // 1.0
+            rightValue = Double.parseDouble(parts[2]); // 2.0
+        } catch (NumberFormatException e) { // existing exception type
+            throw new InvalidStatementException("Non-numeric data", statement, e);
+        }
 
         // translate string command to math command
         setCommandFromString(commandString);
+        if(command == null)
+            throw new InvalidStatementException("Invalid command", statement);
 
         // create appropriate calculate base derived class
         CalculateBase calculator = null;
@@ -55,7 +64,6 @@ public class CalculateHelper {
             command = MathCommand.Multiply;
         else if(commandString.equalsIgnoreCase(MathCommand.Divide.toString()))
             command = MathCommand.Divide;
-
     }
 
     // new complete implementation of `toString()` method
