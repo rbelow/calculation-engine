@@ -31,6 +31,7 @@ public class CalculateHelper {
             throw new InvalidStatementException("Invalid command", statement);
 
         // create appropriate calculate base derived class
+        // hard-coded list of commands supported
         CalculateBase calculator = null;
         switch(command) {
             case Add:
